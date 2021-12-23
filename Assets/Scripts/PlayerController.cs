@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,10 +39,20 @@ public class PlayerController : MonoBehaviour
             health--;
             Debug.Log ("Health " + health);
         }
+        if (other.tag == "Goal" && score == 20)
+        {
+            Debug.Log ("You Win!");
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0)
+        {
+            Debug.Log ("Game Over!");
+            SceneManager.LoadScene("Maze", LoadSceneMode.Single);
+            health = 5;
+            score = 0;
+        }
     }
 }
