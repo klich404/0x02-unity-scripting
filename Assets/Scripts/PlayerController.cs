@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody ball; //ball = player
     public float speed = 700; //speed of the ball
     private int score = 0; //score = coins
+    public int health = 5; //health of the ball
 
     //excecution of the movement of the ball once per frame
     //Input.GetKey = receives the Key od the movement(WASD)
@@ -31,6 +32,11 @@ public class PlayerController : MonoBehaviour
             score++;
             Debug.Log ("Score: " + score);
             Destroy(other.gameObject);
+        }
+        if (other.tag == "Trap")
+        {
+            health--;
+            Debug.Log ("Health " + health);
         }
     }
     // Update is called once per frame
